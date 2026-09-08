@@ -24,9 +24,6 @@ const projects = [
     <header class="intro">
       <p class="kicker">Hudea</p>
       <h1>项目</h1>
-      <p class="lede">
-        本机优先的工程工具。首页按项目排布状态，后续可以直接往下加卡片。
-      </p>
     </header>
 
     <section class="list" aria-label="项目列表">
@@ -91,14 +88,6 @@ const projects = [
   font-size: 2.35rem;
   letter-spacing: -0.03em;
   line-height: 1.15;
-}
-
-.lede {
-  max-width: 36rem;
-  margin: 0.85rem 0 0;
-  color: var(--vp-c-text-2);
-  font-size: 1.02rem;
-  line-height: 1.7;
 }
 
 .card {
