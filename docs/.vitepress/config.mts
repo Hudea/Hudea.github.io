@@ -22,9 +22,13 @@ export default defineConfig({
       ],
       '/projects/': [
         {
-          text: '项目实战',
+          text: 'SubLift',
           items: [
-            { text: 'SubLift', link: '/projects/sublift' }
+            { text: '概览', link: '/projects/sublift' },
+            { text: '核心功能', link: '/projects/sublift#核心功能' },
+            { text: '技术', link: '/projects/sublift#技术' },
+            { text: '架构', link: '/projects/sublift#架构' },
+            { text: '亮点', link: '/projects/sublift#亮点' }
           ]
         }
       ],

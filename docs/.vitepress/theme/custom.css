@@ -1,29 +1,27 @@
 :root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #3b5bdb 30%,
-    #748ffc
-  );
+  --vp-c-brand-1: #3b5bdb;
+  --vp-c-brand-2: #364fc7;
+  --vp-c-brand-3: #2f4bc2;
+  --vp-c-brand-soft: rgba(59, 91, 219, 0.12);
   --vp-button-brand-bg: #3b5bdb;
   --vp-button-brand-hover-bg: #364fc7;
-  --vp-button-brand-active-bg: #2f4bc2;
 }
 
-.home-note {
-  max-width: 52rem;
-  margin: 0 auto 4.5rem;
-  padding: 0 1.5rem;
-  color: var(--vp-c-text-2);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  text-align: center;
+.dark {
+  --vp-c-brand-1: #91a7ff;
+  --vp-c-brand-2: #748ffc;
+  --vp-c-brand-soft: rgba(145, 167, 255, 0.16);
 }
 
-.home-note p {
-  margin: 0.35rem 0;
+.VPContent:has(.board),
+.VPDoc:has(.board) {
+  padding-top: 0;
 }
 
-.VPHome .VPFeatures {
-  padding-top: 1.5rem;
+.vp-doc:has(.board) {
+  padding: 0;
+}
+
+.vp-doc:has(.board) p {
+  margin: unset;
 }
