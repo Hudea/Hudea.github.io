@@ -2,15 +2,13 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Hudea's Notes",
-  description: "Agent / C++ / AI",
+  title: "Hudea",
+  description: "SubLift — 本地硬字幕提取",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '🔬 科研', link: '/research/hard', activeMatch: '/research/' },
-      { text: '🚀 项目', link: '/projects/sublift', activeMatch: '/projects/' },
-      { text: '📚 笔记', link: '/notes/cpp', activeMatch: '/notes/' }
+      { text: 'SubLift', link: '/projects/sublift' }
     ],
 
     sidebar: {
@@ -26,8 +24,7 @@ export default defineConfig({
         {
           text: '项目实战',
           items: [
-            { text: 'Sublift', link: '/projects/sublift' },
-            { text: 'Harness', link: '/projects/harness' }
+            { text: 'SubLift', link: '/projects/sublift' }
           ]
         }
       ],

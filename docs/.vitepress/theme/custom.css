@@ -1,0 +1,29 @@
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #3b5bdb 30%,
+    #748ffc
+  );
+  --vp-button-brand-bg: #3b5bdb;
+  --vp-button-brand-hover-bg: #364fc7;
+  --vp-button-brand-active-bg: #2f4bc2;
+}
+
+.home-note {
+  max-width: 52rem;
+  margin: 0 auto 4.5rem;
+  padding: 0 1.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.home-note p {
+  margin: 0.35rem 0;
+}
+
+.VPHome .VPFeatures {
+  padding-top: 1.5rem;
+}

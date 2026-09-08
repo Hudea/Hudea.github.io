@@ -2,28 +2,38 @@
 layout: home
 
 hero:
-  name: "Hudea"
-  text: "Agent / C++ / AI"
-  tagline: 记录科研探索、工程实战与技术沉淀
+  name: SubLift
+  text: 本地硬字幕提取
+  tagline: 从视频画面识别烧录字幕，导出可编辑的 SRT。视频和识别文本留在本机，不上传。
   actions:
     - theme: brand
-      text: 浏览科研笔记
-      link: /research/hard
+      text: GitHub 仓库
+      link: https://github.com/Hudea/SubLift
     - theme: alt
-      text: 查看开源项目
+      text: 项目介绍
       link: /projects/sublift
 
 features:
-  - icon: 🔬
-    title: 论文与科研 (Research)
-    details: 关注 Agent、系统架构与前沿 AI 论文精读与复现
-    link: /research/hard
-  - icon: 🚀
-    title: 项目与工程 (Projects)
-    details: Sublift, Harness 等项目架构设计、实战与评测记录
+  - icon: 🐳
+    title: 局域网 Web
+    details: Linux 上用 Docker Compose 跑工作台。CPU Paddle，媒体目录挂进容器，仅限可信局域网。
     link: /projects/sublift
-  - icon: 📚
-    title: 技术笔记 (Notes)
-    details: C++ 现代特性、底层系统与核心算法系统化整理
-    link: /notes/cpp
+  - icon: ⌨️
+    title: Native CLI
+    details: sublift extract 从本机视频写出 SRT。macOS 可用 Vision 或 Paddle，能力不够就明确失败。
+    link: /projects/sublift
+  - icon: 🖥️
+    title: macOS GUI
+    details: 拖拽、预览、选区、校对与批量队列。开发者构建，不是签名安装包。
+    link: /projects/sublift
 ---
+
+<div class="home-note">
+
+**0.1 技术预览** · MIT · [v0.1.0](https://github.com/Hudea/SubLift/releases/tag/v0.1.0)
+
+不是应用商店里的安装包，也不是公网服务。没有 GPU、没有账号、不导出 ASS/VTT。
+
+Hudea 做的开源工具。科研和笔记稍后再放上来。
+
+</div>
