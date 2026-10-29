@@ -1,6 +1,6 @@
 # SubLift
 
-从视频画面识别烧录字幕，导出可编辑的 SRT。抽帧、OCR、打轴都在本机完成，视频和识别文本不上传。
+SubLift 是本地硬字幕提取工具：从视频画面识别烧录字幕，导出可编辑的 SRT。抽帧、OCR、打轴都在本机完成，视频和识别文本不上传。当前 0.1 提供 Native CLI、macOS 工作台，以及局域网 Docker Web；核心是 C++，macOS 可用 Apple Vision，跨平台走 PaddleOCR。
 
 | | |
 |---|---|
