@@ -2,16 +2,47 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Hudea",
-  description: "SubLift — 本地硬字幕提取",
+  lang: 'zh-CN',
+  title: 'Hudea',
+  description: '知识笔记与工程项目',
+  markdown: {
+    math: true
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: 'SubLift', link: '/projects/sublift' }
+      { text: '笔记', link: '/notes/', activeMatch: '^/notes/' },
+      { text: 'SubLift', link: '/projects/sublift', activeMatch: '^/projects/sublift' }
     ],
 
     sidebar: {
+      '/notes/network/': [
+        {
+          text: '计算机网络',
+          items: [
+            { text: '五层体系结构', link: '/notes/network/' }
+          ]
+        },
+        {
+          text: '应用层',
+          collapsed: false,
+          items: [
+            { text: '应用层概述', link: '/notes/network/application/overview' },
+            { text: '应用层基本原理', link: '/notes/network/application/principles' }
+          ]
+        },
+        {
+          text: '传输层',
+          collapsed: false,
+          items: [
+            { text: '传输层基本概念', link: '/notes/network/transport/overview' },
+            { text: '传输层基本原理', link: '/notes/network/transport/principles' },
+            { text: 'TCP', link: '/notes/network/transport/tcp' },
+            { text: 'UDP（待更新）' }
+          ]
+        }
+      ],
       '/research/': [
         {
           text: '论文与科研',
@@ -31,15 +62,6 @@ export default defineConfig({
             { text: '亮点', link: '/projects/sublift#亮点' }
           ]
         }
-      ],
-      '/notes/': [
-        {
-          text: '技术笔记',
-          items: [
-            { text: 'C++ 核心笔记', link: '/notes/cpp' },
-            { text: '算法与数据结构', link: '/notes/algorithm' }
-          ]
-        }
       ]
     },
 
@@ -51,6 +73,15 @@ export default defineConfig({
       level: [2, 3],
       label: '本页目录'
     },
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+
+    sidebarMenuLabel: '目录',
+    returnToTopLabel: '回到顶部',
+    darkModeSwitchLabel: '外观',
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Hudea' }

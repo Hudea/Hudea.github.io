@@ -25,3 +25,64 @@
 .vp-doc:has(.board) p {
   margin: unset;
 }
+
+/* Note illustrations & click-to-zoom */
+.vp-doc img {
+  display: block;
+  max-width: 100%;
+  margin: 1.35rem auto;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  cursor: zoom-in;
+  transition: border-color 0.15s ease;
+}
+
+.vp-doc img:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.dark .vp-doc img {
+  filter: brightness(0.93) contrast(0.98);
+}
+
+/* Tables with multi-column state transitions */
+.vp-doc table {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.vp-doc th {
+  white-space: nowrap;
+}
+
+.vp-doc td:first-child {
+  min-width: 6.5rem;
+}
+
+/* MathJax display formulas */
+.vp-doc mjx-container[display="true"] {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.1rem 0;
+  padding: 0.25rem 0;
+}
+
+/* Collapsible details blocks */
+.vp-doc .custom-block.details {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc .custom-block.details summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Muted pending items in sidebar */
+.VPSidebarItem.level-1:not(.is-link):not(.collapsible) > .item > .text {
+  color: var(--vp-c-text-3);
+  font-weight: 400;
+  font-size: 13px;
+}
