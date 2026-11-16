@@ -21,7 +21,8 @@ export default defineConfig({
         {
           text: 'Agent 基础',
           items: [
-            { text: 'Agent 基本认知', link: '/notes/agent/fundamentals' }
+            { text: 'Agent 基本认知', link: '/notes/agent/fundamentals' },
+            { text: '针对 Agent 的核心攻击手法', link: '/notes/agent/attacks' }
           ]
         }
       ],

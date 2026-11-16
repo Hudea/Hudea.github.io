@@ -4,34 +4,33 @@ const noteSeries = [
     name: 'Agent 基础',
     status: 'active',
     statusLabel: '持续整理',
-    countLabel: '1 篇',
+    countLabel: '2 篇',
     summary:
-      '从现代 Agent 工程与 Runtime 视角拆解“感知—记忆—规划—行动”闭环工作流，结合上下文工程、CoALA 记忆体系、动态重规划及 MCP / Skills / Plugins 扩展机制建立系统认知。',
+      '从现代 Agent Runtime 视角建立系统认知：拆解“感知—记忆—规划—行动”闭环与 MCP / Skills 扩展底座，并顺着全链路剖析六大对抗性攻击面、模型幻觉与纵深防御体系。',
     entry: '/notes/agent/fundamentals',
     highlight: {
-      label: '直达：MCP 与 Skills',
-      link: '/notes/agent/fundamentals#工具扩展机制'
+      label: '最新：核心攻击手法与防御',
+      link: '/notes/agent/attacks'
     },
     layers: [
       {
-        code: '01 · 基础工作流',
-        title: '感知 · 记忆 · 规划 · 行动',
-        desc: '分层上下文治理与缓存、CoALA 四类记忆、动态重规划闭环与 Runtime Span 追踪',
+        code: '01 · 架构与扩展底座',
+        title: 'Agent 基本认知',
+        desc: '感知分层注入与 Context 治理、CoALA 四类记忆、动态重规划及 MCP / Skills / Plugins 扩展机制',
         items: [
-          { text: '感知', link: '/notes/agent/fundamentals#感知' },
-          { text: '记忆', link: '/notes/agent/fundamentals#记忆' },
-          { text: '规划', link: '/notes/agent/fundamentals#规划' },
-          { text: '行动与总结', link: '/notes/agent/fundamentals#行动' }
+          { text: '基础工作流', link: '/notes/agent/fundamentals#基础工作流' },
+          { text: 'MCP 与 Skills', link: '/notes/agent/fundamentals#工具扩展机制' }
         ]
       },
       {
-        code: '02 · 工具扩展机制',
-        title: 'MCP · Skills · Plugins',
-        desc: '外部集成协议标准化、三层渐进式上下文披露与工程能力打包容器',
+        code: '02 · 安全与纵深防御',
+        title: '针对 Agent 的核心攻击手法',
+        desc: '致命三要素、间接注入、记忆投毒、规划劫持、执行穿透、MCP 供应链与多智能体横向渗透',
         items: [
-          { text: 'MCP 协议', link: '/notes/agent/fundamentals#mcp-协议' },
-          { text: 'Skills 技能机制', link: '/notes/agent/fundamentals#skills-技能机制' },
-          { text: '三者职责边界', link: '/notes/agent/fundamentals#mcp、skills-与-plugins-的职责边界' }
+          { text: '攻击本质', link: '/notes/agent/attacks' },
+          { text: '记忆投毒', link: '/notes/agent/attacks#持久化记忆层-记忆投毒与逻辑炸弹' },
+          { text: '执行与供应链', link: '/notes/agent/attacks#执行层-权限越界、解析穿透与静默外带' },
+          { text: '横向渗透', link: '/notes/agent/attacks#多智能体协同层-横向渗透' }
         ]
       }
     ]

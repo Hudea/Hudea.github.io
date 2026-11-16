@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+  <defs>
+    <marker id="arrow-dark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+    <style>
+      .h1 { font: 600 15px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 500 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0369a1; }
+      .atk-title { font: 600 12.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #991b1b; }
+      .atk-warn { font: 600 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #b91c1c; }
+      .hub-tag { font: 600 11.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0369a1; }
+      .hub-title { font: 600 12.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .def-title { font: 600 12.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #166534; }
+      .body { font: 500 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .label { font: 600 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="920" height="460" rx="12" fill="#f8fafc" />
+
+  <!-- 顶部标题 -->
+  <text x="460" y="30" text-anchor="middle" class="h1">规划与控制流层：三大失守点与外部 Harness 硬约束</text>
+  <text x="460" y="50" text-anchor="middle" class="sub">攻击分别针对方向盘（状态机）、刹车片（循环预算）与副驾安全员（HITL 审批），根治必须依赖外部硬锁</text>
+
+  <!-- ================= 第一排：三大攻击面 ================= -->
+  <rect x="36" y="76" width="244" height="88" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+  <text x="158" y="98" text-anchor="middle" class="atk-title">攻击 ①：目标劫持（ASI01）</text>
+  <text x="158" y="119" text-anchor="middle" class="body">完全覆盖 / 寄生夹带暗门步骤</text>
+  <text x="158" y="137" text-anchor="middle" class="body">跳步虚假销账（跳过单测/扫描）</text>
+  <text x="158" y="155" text-anchor="middle" class="atk-warn">→ 偏离用户原始意图</text>
+
+  <rect x="338" y="76" width="244" height="88" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+  <text x="460" y="98" text-anchor="middle" class="atk-title">攻击 ②：死循环与 DoW 耗尽</text>
+  <text x="460" y="119" text-anchor="middle" class="body">A↔B 报错震荡 + OverThinking</text>
+  <text x="460" y="137" text-anchor="middle" class="body">Subagent 分叉炸弹打满配额</text>
+  <text x="460" y="155" text-anchor="middle" class="atk-warn">→ 线程卡死 / 算力账单爆炸</text>
+
+  <rect x="640" y="76" width="244" height="88" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5" />
+  <text x="762" y="98" text-anchor="middle" class="atk-title">攻击 ③：审批欺骗（ASI09）</text>
+  <text x="762" y="119" text-anchor="middle" class="body">阴阳蓝图（空格/编码藏私货）</text>
+  <text x="762" y="137" text-anchor="middle" class="body">虚假备份背书 + 弹窗疲劳轰炸</text>
+  <text x="762" y="155" text-anchor="middle" class="atk-warn">→ 诱骗人类亲手 Approve</text>
+
+  <!-- 攻击箭头向下 -->
+  <line x1="158" y1="164" x2="158" y2="208" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+  <text x="166" y="191" text-anchor="start" class="label" style="fill:#b91c1c;">篡改状态</text>
+
+  <line x1="460" y1="164" x2="460" y2="208" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+  <text x="468" y="191" text-anchor="start" class="label" style="fill:#b91c1c;">破坏收敛</text>
+
+  <line x1="762" y1="164" x2="762" y2="208" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)" />
+  <text x="770" y="191" text-anchor="start" class="label" style="fill:#b91c1c;">认知穿透</text>
+
+  <!-- ================= 第二排：规划控制流核心节点 ================= -->
+  <rect x="36" y="212" width="244" height="82" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.6" />
+  <text x="158" y="233" text-anchor="middle" class="hub-tag">【方向盘】任务规划与状态机</text>
+  <text x="158" y="255" text-anchor="middle" class="hub-title">Plan Mode + Todo State</text>
+  <text x="158" y="275" text-anchor="middle" class="body">负责子任务拆解与进度状态迁移</text>
+
+  <line x1="280" y1="253" x2="334" y2="253" stroke="#1e293b" stroke-width="1.7" marker-end="url(#arrow-dark)" />
+  <text x="309" y="242" text-anchor="middle" class="label" style="fill:#1e293b;">派发</text>
+
+  <rect x="338" y="212" width="244" height="82" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.6" />
+  <text x="460" y="233" text-anchor="middle" class="hub-tag">【刹车片】调度循环与预算</text>
+  <text x="460" y="255" text-anchor="middle" class="hub-title">Runtime Loop &amp; Thinking</text>
+  <text x="460" y="275" text-anchor="middle" class="body">控制反思重调度轮数与思考深度</text>
+
+  <line x1="582" y1="253" x2="636" y2="253" stroke="#1e293b" stroke-width="1.7" marker-end="url(#arrow-dark)" />
+  <text x="611" y="242" text-anchor="middle" class="label" style="fill:#1e293b;">高危断点</text>
+
+  <rect x="640" y="212" width="244" height="82" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.6" />
+  <text x="762" y="233" text-anchor="middle" class="hub-tag">【副驾安全员】人机审批网关</text>
+  <text x="762" y="255" text-anchor="middle" class="hub-title">HITL Breakpoint + Checkpointer</text>
+  <text x="762" y="275" text-anchor="middle" class="body">挂起高危动作并等待人类裁决</text>
+
+  <!-- 防御箭头向上锁定 -->
+  <line x1="158" y1="350" x2="158" y2="298" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow-green)" />
+  <text x="166" y="328" text-anchor="start" class="label" style="fill:#166534;">硬验收</text>
+
+  <line x1="460" y1="350" x2="460" y2="298" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow-green)" />
+  <text x="468" y="328" text-anchor="start" class="label" style="fill:#166534;">硬熔断</text>
+
+  <line x1="762" y1="350" x2="762" y2="298" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrow-green)" />
+  <text x="770" y="328" text-anchor="start" class="label" style="fill:#166534;">反社工</text>
+
+  <!-- ================= 第三排：外部 Harness 三把硬锁 ================= -->
+  <rect x="36" y="350" width="244" height="88" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+  <text x="158" y="373" text-anchor="middle" class="def-title">防线 ①：外部硬验收（Hooks）</text>
+  <text x="158" y="395" text-anchor="middle" class="body">Plan 范围锁定 + 隔离脏输入</text>
+  <text x="158" y="415" text-anchor="middle" class="body">Stop Hook 跑真单测与 Diff 核验</text>
+
+  <rect x="338" y="350" width="244" height="88" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+  <text x="460" y="373" text-anchor="middle" class="def-title">防线 ②：四维硬熔断器</text>
+  <text x="460" y="395" text-anchor="middle" class="body">步数 / 金额 / Thinking Token 封顶</text>
+  <text x="460" y="415" text-anchor="middle" class="body">调用指纹去重 + 禁深层 Subagent</text>
+
+  <rect x="640" y="350" width="244" height="88" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" />
+  <text x="762" y="373" text-anchor="middle" class="def-title">防线 ③：所见即所跑审批 UI</text>
+  <text x="762" y="395" text-anchor="middle" class="body">置顶原始命令/Diff，弱化申诉文案</text>
+  <text x="762" y="415" text-anchor="middle" class="body">管道/编码/超长空格红标禁跳过</text>
+</svg>
