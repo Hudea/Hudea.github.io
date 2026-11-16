@@ -17,6 +17,14 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/notes/agent/': [
+        {
+          text: 'Agent 基础',
+          items: [
+            { text: 'Agent 基本认知', link: '/notes/agent/fundamentals' }
+          ]
+        }
+      ],
       '/notes/network/': [
         {
           text: '计算机网络',

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" width="920" height="600">
+  <defs>
+    <marker id="arrow-right" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+    <style>
+      .title { font: 600 14px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .label { font: 500 12px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1e293b; }
+      .sub { font: 500 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0369a1; }
+      .span-text { font: 600 12px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="920" height="600" rx="12" fill="#f8fafc" />
+
+  <!-- ================= 上半部分：运行时交互闭环 ================= -->
+  <text x="460" y="28" text-anchor="middle" class="sub">运行时闭环视角：感知 — 记忆 — 规划 — 行动</text>
+
+  <!-- 核心实体框 -->
+  <rect x="135" y="45" width="95" height="315" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.5" />
+  <text x="182" y="205" text-anchor="middle" class="title">AI Agent</text>
+  <text x="182" y="224" text-anchor="middle" class="sub">(运行时编排)</text>
+
+  <rect x="365" y="150" width="95" height="95" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.5" />
+  <text x="412" y="202" text-anchor="middle" class="title">工具 (Tool)</text>
+
+  <!-- 数据源圆柱体 -->
+  <path d="M 535 170 L 535 230 A 42 10 0 0 0 619 230 L 619 170" fill="#bae6fd" stroke="#1e293b" stroke-width="1.5" />
+  <ellipse cx="577" cy="170" rx="42" ry="10" fill="#e0f2fe" stroke="#1e293b" stroke-width="1.5" />
+  <text x="577" y="208" text-anchor="middle" class="title">数据源</text>
+
+  <rect x="705" y="45" width="95" height="315" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.5" />
+  <text x="752" y="205" text-anchor="middle" class="title">LLM</text>
+  <text x="752" y="224" text-anchor="middle" class="sub">(无状态推理)</text>
+
+  <!-- 循环虚线框 -->
+  <rect x="115" y="92" width="705" height="225" rx="8" fill="none" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="6,4" />
+  <text x="64" y="195" text-anchor="middle" class="sub">循环创建</text>
+  <text x="64" y="212" text-anchor="middle" class="sub">更多 Span</text>
+
+  <!-- 交互箭头 -->
+  <!-- 1. 用户提示词 -->
+  <line x1="35" y1="65" x2="131" y2="65" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="82" y="56" text-anchor="middle" class="label">提示词</text>
+
+  <!-- 2. 组装上下文发给 LLM -->
+  <line x1="230" y1="65" x2="701" y2="65" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="467" y="56" text-anchor="middle" class="label">[感知] 组装 Context（提示词 + 记忆 + 工具描述）</text>
+
+  <!-- 3. LLM 返回 Tool Use -->
+  <line x1="705" y1="115" x2="234" y2="115" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="467" y="106" text-anchor="middle" class="label">[规划/决策] 返回 Tool Use 指令</text>
+
+  <!-- 4. Agent 调工具 -->
+  <line x1="230" y1="175" x2="361" y2="175" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="297" y="166" text-anchor="middle" class="label">[行动] 执行请求</text>
+
+  <!-- 5. 工具与数据源双向交互 -->
+  <line x1="460" y1="188" x2="531" y2="188" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <line x1="535" y1="212" x2="464" y2="212" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+
+  <!-- 6. 工具返回结果 -->
+  <line x1="365" y1="225" x2="234" y2="225" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="297" y="242" text-anchor="middle" class="label">返回输出</text>
+
+  <!-- 7. Observation 回流给 LLM -->
+  <line x1="230" y1="292" x2="701" y2="292" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="467" y="283" text-anchor="middle" class="label">[感知] Tool Use 结果 (Observation) 回流进下一轮上下文</text>
+
+  <!-- 8. 最终返回 -->
+  <line x1="705" y1="342" x2="234" y2="342" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="467" y="333" text-anchor="middle" class="label">最终推理结果</text>
+
+  <line x1="135" y1="342" x2="39" y2="342" stroke="#1e293b" stroke-width="1.8" marker-end="url(#arrow-right)" />
+  <text x="82" y="333" text-anchor="middle" class="label">交付结果</text>
+
+  <!-- ================= 下半部分：Trace / Span 瀑布图 ================= -->
+  <line x1="40" y1="385" x2="880" y2="385" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4" />
+
+  <!-- 左侧 Trace 竖条 -->
+  <rect x="115" y="405" width="28" height="170" rx="4" fill="#0f4c5c" />
+  <text x="129" y="490" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 129 490)" style="font: 600 13px sans-serif; fill: #ffffff;">Trace</text>
+
+  <!-- Root Span -->
+  <rect x="155" y="405" width="665" height="30" rx="4" fill="#fed7aa" stroke="#9a3412" stroke-width="1.2" />
+  <text x="487" y="425" text-anchor="middle" class="span-text">Root Span（整条任务链路）</text>
+
+  <!-- 阶梯式子 Span（首尾相接，真实反映同步时序） -->
+  <rect x="170" y="448" width="175" height="28" rx="4" fill="#bbf7d0" stroke="#166534" stroke-width="1.2" />
+  <text x="257" y="467" text-anchor="middle" class="span-text">第 1 轮 LLM 推理 Span</text>
+
+  <rect x="350" y="490" width="140" height="28" rx="4" fill="#f5d0fe" stroke="#86198f" stroke-width="1.2" />
+  <text x="420" y="509" text-anchor="middle" class="span-text">工具调用 Span</text>
+
+  <rect x="495" y="532" width="175" height="28" rx="4" fill="#bbf7d0" stroke="#166534" stroke-width="1.2" />
+  <text x="582" y="551" text-anchor="middle" class="span-text">第 2 轮 LLM 推理 Span</text>
+
+  <rect x="675" y="532" width="130" height="28" rx="4" fill="#dcfce7" stroke="#166534" stroke-width="1.2" stroke-dasharray="4,3" />
+  <text x="740" y="551" text-anchor="middle" class="span-text">后续迭代 Span...</text>
+</svg>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480">
+  <defs>
+    <marker id="arrow-right" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+    <marker id="arrow-left" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M 10 1 L 0 5 L 10 9 z" fill="#1e293b" />
+    </marker>
+    <style>
+      .h1 { font: 600 15px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .title { font: 600 13px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .label { font: 500 11.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #1e293b; }
+      .sub { font: 500 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0369a1; }
+      .muted { font: 500 10.5px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .pill { font: 600 11px system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="920" height="480" rx="12" fill="#f8fafc" />
+
+  <!-- 顶部标题 -->
+  <text x="460" y="30" text-anchor="middle" class="h1">MCP（Model Context Protocol）三层角色与双模传输架构</text>
+  <text x="460" y="50" text-anchor="middle" class="sub">LLM 仅向 Host 输出 Tool Call 意图，真正通过 JSON-RPC 2.0 连接外部资源的是 Host 内的 MCP Client ↔ Server</text>
+
+  <!-- ================= 左上：独立的 LLM ================= -->
+  <rect x="45" y="75" width="250" height="62" rx="8" fill="#fed7aa" stroke="#9a3412" stroke-width="1.5" />
+  <text x="170" y="101" text-anchor="middle" class="title">LLM（无状态推理模型）</text>
+  <text x="170" y="121" text-anchor="middle" class="muted">不直接执行代码，不发起网络请求</text>
+
+  <!-- LLM <-> Host 双向箭头 -->
+  <line x1="142" y1="137" x2="142" y2="181" stroke="#1e293b" stroke-width="1.7" marker-end="url(#arrow-right)" />
+  <text x="134" y="164" text-anchor="end" class="label">Tool Call 意图</text>
+
+  <line x1="198" y1="185" x2="198" y2="141" stroke="#1e293b" stroke-width="1.7" marker-end="url(#arrow-right)" />
+  <text x="206" y="164" text-anchor="start" class="label">Context / 观测结果</text>
+
+  <!-- ================= 左下：MCP Host 容器 ================= -->
+  <rect x="40" y="185" width="260" height="265" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.6" />
+  <text x="170" y="210" text-anchor="middle" class="title">MCP Host（Agent Runtime）</text>
+  <text x="170" y="228" text-anchor="middle" class="sub">如 Claude Code / Cursor（管权限与编排）</text>
+
+  <!-- Host 内的 3 个 1:1 Client -->
+  <rect x="65" y="248" width="210" height="52" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.4" />
+  <text x="170" y="279" text-anchor="middle" class="title">MCP Client 1</text>
+
+  <rect x="65" y="314" width="210" height="52" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.4" />
+  <text x="170" y="345" text-anchor="middle" class="title">MCP Client 2</text>
+
+  <rect x="65" y="380" width="210" height="52" rx="6" fill="#bae6fd" stroke="#1e293b" stroke-width="1.4" />
+  <text x="170" y="411" text-anchor="middle" class="title">MCP Client 3</text>
+
+  <!-- ================= 右上：Server 暴露的三大原语 ================= -->
+  <rect x="495" y="75" width="385" height="82" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5,3" />
+  <text x="687" y="97" text-anchor="middle" class="title">MCP Server 统一暴露三大原语（Primitives）</text>
+
+  <rect x="503" y="110" width="112" height="34" rx="6" fill="#bbf7d0" stroke="#166534" stroke-width="1.2" />
+  <text x="559" y="131" text-anchor="middle" class="pill">Tools（模型控制）</text>
+
+  <rect x="622" y="110" width="134" height="34" rx="6" fill="#fde68a" stroke="#92400e" stroke-width="1.2" />
+  <text x="689" y="131" text-anchor="middle" class="pill">Resources（应用控制）</text>
+
+  <rect x="763" y="110" width="110" height="34" rx="6" fill="#f5d0fe" stroke="#86198f" stroke-width="1.2" />
+  <text x="818" y="131" text-anchor="middle" class="pill">Prompts（用户控制）</text>
+
+  <!-- 连接原语框与 Server 列表的虚线指引 -->
+  <line x1="582" y1="157" x2="582" y2="190" stroke="#64748b" stroke-width="1.3" stroke-dasharray="3,3" />
+
+  <!-- ================= 中间：JSON-RPC 2.0 双模传输通道 ================= -->
+  <text x="398" y="210" text-anchor="middle" class="title">JSON-RPC 2.0</text>
+  <text x="398" y="228" text-anchor="middle" class="sub">1:1 会话 · 双模传输</text>
+
+  <line x1="279" y1="274" x2="491" y2="274" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <text x="398" y="264" text-anchor="middle" class="label">stdio（本地子进程）</text>
+
+  <line x1="279" y1="340" x2="491" y2="340" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <text x="398" y="330" text-anchor="middle" class="label">stdio（本地子进程）</text>
+
+  <line x1="279" y1="406" x2="491" y2="406" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <text x="398" y="396" text-anchor="middle" class="label">Streamable HTTP（远程）</text>
+
+  <!-- ================= 右侧中列：MCP Server ================= -->
+  <text x="582" y="210" text-anchor="middle" class="title">MCP Server</text>
+  <text x="582" y="228" text-anchor="middle" class="sub">封装鉴权与协议适配</text>
+
+  <rect x="495" y="248" width="175" height="52" rx="6" fill="#bbf7d0" stroke="#166534" stroke-width="1.4" />
+  <text x="582" y="271" text-anchor="middle" class="title">MCP Server A</text>
+  <text x="582" y="289" text-anchor="middle" class="muted">本地文件与 Git 适配</text>
+
+  <rect x="495" y="314" width="175" height="52" rx="6" fill="#bbf7d0" stroke="#166534" stroke-width="1.4" />
+  <text x="582" y="337" text-anchor="middle" class="title">MCP Server B</text>
+  <text x="582" y="355" text-anchor="middle" class="muted">数据库只读/查询适配</text>
+
+  <rect x="495" y="380" width="175" height="52" rx="6" fill="#bbf7d0" stroke="#166534" stroke-width="1.4" />
+  <text x="582" y="403" text-anchor="middle" class="title">MCP Server C</text>
+  <text x="582" y="421" text-anchor="middle" class="muted">云端 SaaS / API 适配</text>
+
+  <!-- ================= 最右侧：外部系统/数据源 ================= -->
+  <text x="802" y="210" text-anchor="middle" class="title">外部数据源与服务</text>
+
+  <line x1="674" y1="274" x2="721" y2="274" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <rect x="725" y="248" width="155" height="52" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.4" />
+  <text x="802" y="279" text-anchor="middle" class="title">本地文件系统</text>
+
+  <line x1="674" y1="340" x2="721" y2="340" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <rect x="725" y="314" width="155" height="52" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.4" />
+  <text x="802" y="345" text-anchor="middle" class="title">数据库（PostgreSQL）</text>
+
+  <line x1="674" y1="406" x2="721" y2="406" stroke="#1e293b" stroke-width="1.7" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  <rect x="725" y="380" width="155" height="52" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1.4" />
+  <text x="802" y="411" text-anchor="middle" class="title">外部服务（GitHub 等）</text>
+</svg>

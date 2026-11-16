@@ -1,6 +1,42 @@
 <script setup>
 const noteSeries = [
   {
+    name: 'Agent 基础',
+    status: 'active',
+    statusLabel: '持续整理',
+    countLabel: '1 篇',
+    summary:
+      '从现代 Agent 工程与 Runtime 视角拆解“感知—记忆—规划—行动”闭环工作流，结合上下文工程、CoALA 记忆体系、动态重规划及 MCP / Skills / Plugins 扩展机制建立系统认知。',
+    entry: '/notes/agent/fundamentals',
+    highlight: {
+      label: '直达：MCP 与 Skills',
+      link: '/notes/agent/fundamentals#工具扩展机制'
+    },
+    layers: [
+      {
+        code: '01 · 基础工作流',
+        title: '感知 · 记忆 · 规划 · 行动',
+        desc: '分层上下文治理与缓存、CoALA 四类记忆、动态重规划闭环与 Runtime Span 追踪',
+        items: [
+          { text: '感知', link: '/notes/agent/fundamentals#感知' },
+          { text: '记忆', link: '/notes/agent/fundamentals#记忆' },
+          { text: '规划', link: '/notes/agent/fundamentals#规划' },
+          { text: '行动与总结', link: '/notes/agent/fundamentals#行动' }
+        ]
+      },
+      {
+        code: '02 · 工具扩展机制',
+        title: 'MCP · Skills · Plugins',
+        desc: '外部集成协议标准化、三层渐进式上下文披露与工程能力打包容器',
+        items: [
+          { text: 'MCP 协议', link: '/notes/agent/fundamentals#mcp-协议' },
+          { text: 'Skills 技能机制', link: '/notes/agent/fundamentals#skills-技能机制' },
+          { text: '三者职责边界', link: '/notes/agent/fundamentals#mcp、skills-与-plugins-的职责边界' }
+        ]
+      }
+    ]
+  },
+  {
     name: '计算机网络',
     status: 'active',
     statusLabel: '持续整理',
@@ -85,7 +121,10 @@ const projects = [
           </div>
         </div>
 
-        <div class="layer-grid">
+        <div
+          class="layer-grid"
+          :class="s.layers.length === 2 ? 'cols-2' : 'cols-3'"
+        >
           <div v-for="layer in s.layers" :key="layer.code" class="layer-box">
             <div class="layer-code">{{ layer.code }}</div>
             <div class="layer-title">{{ layer.title }}</div>
@@ -222,7 +261,7 @@ const projects = [
 }
 
 .card + .card {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
 }
 
 .card-head {
@@ -294,11 +333,18 @@ const projects = [
 
 .layer-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
   margin-top: 1.35rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--vp-c-divider);
+}
+
+.layer-grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.layer-grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .layer-box {
@@ -457,7 +503,8 @@ const projects = [
     justify-content: flex-start;
   }
 
-  .layer-grid {
+  .layer-grid.cols-2,
+  .layer-grid.cols-3 {
     grid-template-columns: 1fr;
   }
 

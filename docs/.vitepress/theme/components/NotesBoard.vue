@@ -1,6 +1,25 @@
 <script setup>
 const subjects = [
   {
+    id: 'agent',
+    title: 'Agent 基础',
+    badge: '持续整理',
+    summary:
+      '围绕现代 Agent Runtime 梳理“感知—记忆—规划—行动”闭环原理，覆盖上下文工程、CoALA 记忆模型、动态重规划及 MCP / Skills / Plugins 扩展机制。',
+    groups: [
+      {
+        layer: '01 · 核心认知与架构',
+        items: [
+          {
+            title: 'Agent 基本认知',
+            desc: '四要素工作流闭环（感知分层注入与 Context 治理、CoALA 四类记忆、动态重规划、Runtime Span 追踪）与工具扩展体系（MCP 协议、Skills 渐进式披露、Plugins）',
+            link: '/notes/agent/fundamentals'
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 'network',
     title: '计算机网络',
     badge: '持续整理',
