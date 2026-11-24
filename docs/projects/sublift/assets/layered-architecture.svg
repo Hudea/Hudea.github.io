@@ -76,7 +76,7 @@
 
   <!-- Arrow Rust -> Composition Roots -->
   <path d="M 737 174 L 737 204" class="arrow-teal" marker-end="url(#at)"/>
-  <text x="748" y="194" class="mono-teal" style="font-size:10px">stdio JSON-Lines（零端口 · stdin EOF 自动回收）</text>
+  <text x="415" y="194" class="mono-teal" style="font-size:10px">stdio JSON-Lines（零端口 · stdin EOF 级联回收）</text>
 
   <!-- Composition Roots Bar -->
   <rect x="26" y="208" width="928" height="44" rx="8" class="box-dark"/>

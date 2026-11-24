@@ -84,7 +84,7 @@
   <text x="54" y="255" class="sub" style="font-size:10.5px"><tspan style="font-weight:700;fill:#111318">断点续传：</tspan>每完成一张 Sheet 原子写 AppData/.partial.json，断网重跑零浪费 Token</text>
 
   <rect x="498" y="236" width="440" height="30" rx="6" fill="#e9f8f5" stroke="#a7e3d8"/>
-  <text x="510" y="255" class="sub" style="font-size:10.5px"><tspan style="font-weight:700;fill:#0f766e">终态同源 + 局部重识：</tspan>经 worker finalize_srt 出轴；校对态可圈选低置信度条目定向 VLM 重识</text>
+  <text x="508" y="255" class="sub" style="font-size:9.9px"><tspan style="font-weight:700;fill:#0f766e">终态同源 + 局部重识：</tspan>经 finalize_srt 出轴；校对态可圈选低置信度条目定向重识</text>
 
   <!-- Bottom Left: Worker Supervisor & Security -->
   <rect x="26" y="296" width="454" height="166" rx="10" class="panel"/>
