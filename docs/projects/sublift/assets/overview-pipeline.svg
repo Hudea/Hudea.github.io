@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 390" width="980" height="390">
+  <defs>
+    <style>
+      .bg { fill: #fafaf8; stroke: #d9dde6; stroke-width: 1.2; }
+      .title { font: 700 15px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .eyebrow { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; letter-spacing: 0.08em; }
+      .card { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.25; }
+      .card-accent { fill: #f4f7ff; stroke: #2b4be0; stroke-width: 1.5; }
+      .card-teal { fill: #f1fbf9; stroke: #0d9488; stroke-width: 1.4; }
+      .card-amber { fill: #fffaf0; stroke: #d97706; stroke-width: 1.4; }
+      .card-dark { fill: #111318; stroke: #111318; stroke-width: 1.2; }
+      .h { font: 700 13px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .h-inv { font: 700 13px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #ffffff; }
+      .sub { font: 500 11px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #4b5260; }
+      .sub-inv { font: 500 10.5px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #c6cdd9; }
+      .mono { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; }
+      .mono-teal { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #0d9488; }
+      .mono-amber { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #b45309; }
+      .arrow { stroke: #4b5260; stroke-width: 1.6; fill: none; }
+      .arrow-blue { stroke: #2b4be0; stroke-width: 1.7; fill: none; }
+      .dash { stroke: #9aa3b2; stroke-width: 1.2; stroke-dasharray: 4 4; fill: none; }
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#4b5260"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#2b4be0"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="978" height="388" rx="12" class="bg"/>
+
+  <!-- Header -->
+  <text x="26" y="30" class="eyebrow">SUBLIFT V1.0.0 // END-TO-END SAME-ORIGIN PIPELINE</text>
+  <text x="26" y="51" class="title">全链路数据流：共享 C++ 前置打轴与后置 SRT 序列化，三引擎首尾同源</text>
+  <line x1="26" y1="64" x2="954" y2="64" stroke="#e3e6ee" stroke-width="1"/>
+
+  <!-- Stage 0: Input -->
+  <rect x="26" y="114" width="134" height="112" rx="10" class="card-dark"/>
+  <text x="42" y="138" class="eyebrow" style="fill:#7ea0ff">INPUT</text>
+  <text x="42" y="160" class="h-inv">视频源媒体</text>
+  <text x="42" y="180" class="sub-inv">MP4 / MKV / TS</text>
+  <text x="42" y="196" class="sub-inv">HEVC / H.264 / AV1</text>
+  <text x="42" y="212" class="sub-inv">FFmpeg 硬解抽帧</text>
+
+  <!-- Arrow 0->1 -->
+  <path d="M 160 170 L 188 170" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Stage 1: Region -->
+  <rect x="192" y="102" width="156" height="136" rx="10" class="card"/>
+  <text x="206" y="124" class="mono">01 · REGION</text>
+  <text x="206" y="145" class="h">字幕区域定位</text>
+  <text x="206" y="166" class="sub">• 两阶段自动选区</text>
+  <text x="206" y="183" class="sub">  Sobel 能量 + 行聚类</text>
+  <text x="206" y="200" class="sub">• 双峰回扫防双行截断</text>
+  <text x="206" y="217" class="sub">• 或画布零偏差 ROI</text>
+
+  <!-- Arrow 1->2 -->
+  <path d="M 348 170 L 376 170" class="arrow-blue" marker-end="url(#arr-b)"/>
+
+  <!-- Stage 2: Timing Engine (Core Spotlight) -->
+  <rect x="380" y="86" width="196" height="168" rx="10" class="card-accent"/>
+  <text x="394" y="108" class="mono">02 · C++20 TIMING CORE</text>
+  <text x="394" y="129" class="h">视觉特征与纯毫秒打轴</text>
+  <text x="394" y="150" class="sub">• 双极性描边自适应掩码</text>
+  <text x="394" y="167" class="sub">• 三分区 64-bit dHash</text>
+  <text x="394" y="184" class="sub">• 掩码局部 SSIM 巡检</text>
+  <text x="394" y="201" class="sub">• 三分区字形保留否决</text>
+  <text x="394" y="218" class="sub">• 滞回状态机 + 代表帧保留</text>
+  <rect x="394" y="228" width="168" height="18" rx="4" fill="#e5ecff"/>
+  <text x="404" y="241" class="mono" style="font-size:9.5px">OCR 后置 · 多线程有界背压</text>
+
+  <!-- Fork arrows 2 -> 3 engines -->
+  <path d="M 576 132 L 606 132 L 606 116 L 624 116" class="arrow" marker-end="url(#arr)"/>
+  <path d="M 576 170 L 624 170" class="arrow" marker-end="url(#arr)"/>
+  <path d="M 576 208 L 606 208 L 606 232 L 624 232" class="arrow-blue" marker-end="url(#arr-b)"/>
+
+  <!-- Stage 3: Three Engines -->
+  <rect x="628" y="84" width="160" height="58" rx="8" class="card-teal"/>
+  <text x="640" y="104" class="mono-teal">LOCAL · ONNX</text>
+  <text x="640" y="121" class="h" style="font-size:12px">PaddleOCR PP-OCRv6</text>
+  <text x="640" y="135" class="sub" style="font-size:10px">跨平台 · 零 Python · SHA-256</text>
+
+  <rect x="628" y="148" width="160" height="54" rx="8" class="card-teal"/>
+  <text x="640" y="167" class="mono-teal">LOCAL · MACOS</text>
+  <text x="640" y="184" class="h" style="font-size:12px">Apple Vision (ObjC++)</text>
+  <text x="640" y="196" class="sub" style="font-size:10px">系统原生 · 零外部模型</text>
+
+  <rect x="628" y="208" width="160" height="62" rx="8" class="card-amber"/>
+  <text x="640" y="227" class="mono-amber">CLOUD / LOCAL VLM</text>
+  <text x="640" y="244" class="h" style="font-size:12px">Rust 原生流式 VLM</text>
+  <text x="640" y="258" class="sub" style="font-size:10px">拼图 · 限流对冲 · 四级自救</text>
+
+  <!-- Merge arrows 3 -> 4 -->
+  <path d="M 788 113 L 806 113 L 806 170 L 820 170" class="arrow" marker-end="url(#arr)"/>
+  <path d="M 788 175 L 820 175" class="arrow" marker-end="url(#arr)"/>
+  <path d="M 788 239 L 806 239 L 806 180 L 820 180" class="arrow-blue" marker-end="url(#arr-b)"/>
+
+  <!-- Stage 4: Text Consensus & SRT -->
+  <rect x="824" y="102" width="130" height="146" rx="10" class="card"/>
+  <text x="836" y="124" class="mono">04 · TEXT CORE</text>
+  <text x="836" y="145" class="h">共识与终态导出</text>
+  <text x="836" y="166" class="sub">• 行评分抑背景字</text>
+  <text x="836" y="183" class="sub">• 多代表帧共识</text>
+  <text x="836" y="200" class="sub">• 4-Pass 去重合并</text>
+  <text x="836" y="217" class="sub">• 唯一权威 SRT</text>
+  <text x="836" y="234" class="sub">  原子替换落盘</text>
+
+  <!-- Bottom Shared Entries -->
+  <line x1="26" y1="292" x2="954" y2="292" class="dash"/>
+  <rect x="26" y="306" width="300" height="62" rx="8" fill="#ffffff" stroke="#d9dde6"/>
+  <text x="40" y="328" class="mono">ENTRY 01 · DESKTOP</text>
+  <text x="40" y="346" class="h" style="font-size:12px">Tauri 2 + React 19 校对工作台</text>
+  <text x="40" y="361" class="sub" style="font-size:10.5px">统一多集队列 · 分级预览 · 局部低置信度 VLM 重识</text>
+
+  <rect x="340" y="306" width="300" height="62" rx="8" fill="#ffffff" stroke="#d9dde6"/>
+  <text x="354" y="328" class="mono-teal">ENTRY 02 · CLI</text>
+  <text x="354" y="346" class="h" style="font-size:12px">sublift_cli 命令行批处理</text>
+  <text x="354" y="361" class="sub" style="font-size:10.5px">extract 完整提取 · timing 纯打轴 / 单遍条带导出</text>
+
+  <rect x="654" y="306" width="300" height="62" rx="8" fill="#ffffff" stroke="#d9dde6"/>
+  <text x="668" y="328" class="mono-amber">ENTRY 03 · OFFLINE EVAL</text>
+  <text x="668" y="346" class="h" style="font-size:12px">tools/vlm_ocr + 黄金基准套件</text>
+  <text x="668" y="361" class="sub" style="font-size:10.5px">复用 --timing-only 与 srt_eval.py 量化评测</text>
+</svg>

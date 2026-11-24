@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 480" width="980" height="480">
+  <defs>
+    <style>
+      .bg { fill: #fafaf8; stroke: #d9dde6; stroke-width: 1.2; }
+      .title { font: 700 15px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .eyebrow { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; letter-spacing: 0.08em; }
+      .panel { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.25; }
+      .box { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.2; }
+      .box-blue { fill: #eef3ff; stroke: #2b4be0; stroke-width: 1.35; }
+      .box-teal { fill: #e9f8f5; stroke: #0d9488; stroke-width: 1.35; }
+      .box-amber { fill: #fff8eb; stroke: #d97706; stroke-width: 1.35; }
+      .box-dark { fill: #111318; stroke: #111318; stroke-width: 1.2; }
+      .h { font: 700 12.5px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .h-inv { font: 700 12px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #ffffff; }
+      .sub { font: 500 10.6px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #4b5260; }
+      .sub-inv { font: 500 10.2px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #c6cdd9; }
+      .mono { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; }
+      .mono-teal { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #0d9488; }
+      .mono-amber { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #b45309; }
+      .arrow { stroke: #4b5260; stroke-width: 1.5; fill: none; }
+      .arrow-blue { stroke: #2b4be0; stroke-width: 1.6; fill: none; }
+      .arrow-teal { stroke: #0d9488; stroke-width: 1.6; fill: none; }
+      .arrow-amber { stroke: #d97706; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#4b5260"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#2b4be0"/>
+    </marker>
+    <marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#0d9488"/>
+    </marker>
+    <marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="978" height="478" rx="12" class="bg"/>
+  <text x="26" y="30" class="eyebrow">DESKTOP RUNTIME &amp; NATIVE RUST VLM // ZERO-PORT IPC · STREAMING SHEETS · HYBRID MEDIA</text>
+  <text x="26" y="51" class="title">纯桌面宿主通信、Rust 原生 VLM 流式拼图自救管线与分级混合媒体预览</text>
+  <line x1="26" y1="64" x2="954" y2="64" stroke="#e3e6ee" stroke-width="1"/>
+
+  <!-- Top Panel: Rust Native VLM Streaming Pipeline -->
+  <rect x="26" y="78" width="928" height="202" rx="10" class="panel"/>
+  <text x="42" y="100" class="mono-amber">PART 1 · RUST NATIVE STREAMING VLM PIPELINE（desktop/src-tauri/src/vlm/）</text>
+
+  <rect x="42" y="118" width="166" height="106" rx="8" class="box-dark"/>
+  <text x="54" y="138" class="eyebrow" style="fill:#7ea0ff">STAGE 1 · C++ WORKER</text>
+  <text x="54" y="157" class="h-inv">pure_timing_strips</text>
+  <text x="54" y="176" class="sub-inv">边打轴边流式推送</text>
+  <text x="54" y="192" class="sub-inv">timing_slot + PPM 条带</text>
+  <text x="54" y="208" class="sub-inv">读入内存后即删临时图</text>
+
+  <path d="M 208 171 L 236 171" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="240" y="118" width="186" height="106" rx="8" class="box-blue"/>
+  <text x="252" y="138" class="mono">STAGE 2 · SHEET BUILDER</text>
+  <text x="252" y="157" class="h">纵向编号 Contact Sheet</text>
+  <text x="252" y="176" class="sub">• 全宽条带左右各裁 10%</text>
+  <text x="252" y="192" class="sub">• 等比高度归一化</text>
+  <text x="252" y="208" class="sub">• 渲染 [#k] 编号标头拼图</text>
+
+  <path d="M 426 171 L 454 171" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="458" y="118" width="222" height="106" rx="8" class="box-amber"/>
+  <text x="470" y="138" class="mono-amber">STAGE 3 · VLM CLIENT (TOKIO)</text>
+  <text x="470" y="157" class="h">并发调度、退避与尾对冲</text>
+  <text x="470" y="176" class="sub">• RateLimitGate 429 共享退避</text>
+  <text x="470" y="192" class="sub">• 自适应 thinking_mode 降档</text>
+  <text x="470" y="208" class="sub">• 收尾阶段 Tail Hedging 投机对冲</text>
+
+  <path d="M 680 171 L 708 171" class="arrow-teal" marker-end="url(#at)"/>
+
+  <rect x="712" y="118" width="226" height="106" rx="8" class="box-teal"/>
+  <text x="724" y="138" class="mono-teal">STAGE 4 · 校验与四级自救</text>
+  <text x="724" y="157" class="h">二分拆表 + 本地兜底 + 续传</text>
+  <text x="724" y="176" class="sub">• 严格 JSON Schema / ID 对齐</text>
+  <text x="724" y="192" class="sub">• 拦截/截断 → 最多 4 级二分重发</text>
+  <text x="724" y="208" class="sub">• 单槽仍拒 → recognize_strips 兜底</text>
+
+  <!-- Checkpoint + Finalize strip -->
+  <rect x="42" y="236" width="440" height="30" rx="6" fill="#f3f5f9" stroke="#d9dde6"/>
+  <text x="54" y="255" class="sub" style="font-size:10.5px"><tspan style="font-weight:700;fill:#111318">断点续传：</tspan>每完成一张 Sheet 原子写 AppData/.partial.json，断网重跑零浪费 Token</text>
+
+  <rect x="498" y="236" width="440" height="30" rx="6" fill="#e9f8f5" stroke="#a7e3d8"/>
+  <text x="510" y="255" class="sub" style="font-size:10.5px"><tspan style="font-weight:700;fill:#0f766e">终态同源 + 局部重识：</tspan>经 worker finalize_srt 出轴；校对态可圈选低置信度条目定向 VLM 重识</text>
+
+  <!-- Bottom Left: Worker Supervisor & Security -->
+  <rect x="26" y="296" width="454" height="166" rx="10" class="panel"/>
+  <text x="42" y="318" class="mono">PART 2 · 常驻 WORKER 守护与安全隔离</text>
+
+  <rect x="42" y="332" width="204" height="114" rx="8" class="box"/>
+  <text x="54" y="352" class="h" style="font-size:12px">stdio JSON-Lines 守护</text>
+  <text x="54" y="370" class="sub">• 零本地 TCP/UDS 端口</text>
+  <text x="54" y="386" class="sub">• 模型懒加载热驻复用</text>
+  <text x="54" y="402" class="sub">• 请求多路复用与确定取消</text>
+  <text x="54" y="418" class="sub">• stdin EOF 自动级联退出</text>
+  <text x="54" y="434" class="mono" style="font-size:9.6px">崩溃自动重建，保住前端草稿</text>
+
+  <rect x="260" y="332" width="204" height="114" rx="8" class="box"/>
+  <text x="272" y="352" class="h" style="font-size:12px">AppData 安全治理</text>
+  <text x="272" y="370" class="sub">• 零污染用户视频目录</text>
+  <text x="272" y="386" class="sub">• providers.json 强制 0600</text>
+  <text x="272" y="402" class="sub">• 前端仅见掩码 sk-****9f2a</text>
+  <text x="272" y="418" class="sub">• 文件强指纹防抖保存草稿</text>
+  <text x="272" y="434" class="mono-teal" style="font-size:9.6px">原子写盘 + 损坏文件隔离</text>
+
+  <!-- Bottom Right: Tiered Hybrid Preview -->
+  <rect x="496" y="296" width="458" height="166" rx="10" class="panel"/>
+  <text x="512" y="318" class="mono-teal">PART 3 · 分级混合视频预览与零偏差 ROI</text>
+
+  <rect x="512" y="332" width="206" height="114" rx="8" class="box-blue"/>
+  <text x="524" y="352" class="h" style="font-size:12px">一级：精准静帧秒开保底</text>
+  <text x="524" y="370" class="sub">• probe_video + extract_frame</text>
+  <text x="524" y="386" class="sub">• 全编码零等待（10-bit/MKV）</text>
+  <text x="524" y="402" class="sub">• 拖动防抖 + 最新代际丢弃</text>
+  <text x="524" y="418" class="sub">• contain 黑边裁切严格映射</text>
+  <text x="524" y="434" class="mono" style="font-size:9.6px">前端框选与 C++ 裁剪零像素差</text>
+
+  <rect x="732" y="332" width="206" height="114" rx="8" class="box-teal"/>
+  <text x="744" y="352" class="h" style="font-size:12px">二级：sublift:// 按需播放</text>
+  <text x="744" y="370" class="sub">• 兼容 MP4 → 206 Range 直传</text>
+  <text x="744" y="386" class="sub">• MKV/EAC3 → 播放态按需拉起</text>
+  <text x="744" y="402" class="sub">  ffmpeg -c:v copy 流式 fMP4</text>
+  <text x="744" y="418" class="sub">• 严禁导入时整片落盘预转码</text>
+  <text x="744" y="434" class="mono-teal" style="font-size:9.6px">暂停/跳转即刻回收旧子进程</text>
+</svg>

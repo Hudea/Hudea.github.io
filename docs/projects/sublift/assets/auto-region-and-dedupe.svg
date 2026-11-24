@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 450" width="980" height="450">
+  <defs>
+    <style>
+      .bg { fill: #fafaf8; stroke: #d9dde6; stroke-width: 1.2; }
+      .title { font: 700 15px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .eyebrow { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; letter-spacing: 0.08em; }
+      .panel { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.25; }
+      .box { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.2; }
+      .box-blue { fill: #eef3ff; stroke: #2b4be0; stroke-width: 1.35; }
+      .box-teal { fill: #e9f8f5; stroke: #0d9488; stroke-width: 1.35; }
+      .box-amber { fill: #fff8eb; stroke: #d97706; stroke-width: 1.35; }
+      .h { font: 700 12.5px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .sub { font: 500 10.6px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #4b5260; }
+      .mono { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; }
+      .mono-teal { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #0d9488; }
+      .mono-amber { font: 600 10.2px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #b45309; }
+      .arrow { stroke: #4b5260; stroke-width: 1.5; fill: none; }
+      .arrow-blue { stroke: #2b4be0; stroke-width: 1.6; fill: none; }
+      .arrow-teal { stroke: #0d9488; stroke-width: 1.6; fill: none; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#4b5260"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#2b4be0"/>
+    </marker>
+    <marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#0d9488"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="978" height="448" rx="12" class="bg"/>
+  <text x="26" y="30" class="eyebrow">AUTO-REGION &amp; TEXT POST-PROCESSING // TWO-STAGE DETECTION &amp; 4-PASS DEDUPE</text>
+  <text x="26" y="51" class="title">前置两阶段自动选区（Sobel 能量 + 双峰回扫）与后置 4-Pass 去重合并</text>
+  <line x1="26" y1="64" x2="954" y2="64" stroke="#e3e6ee" stroke-width="1"/>
+
+  <!-- Top Panel: Two-stage Auto Region -->
+  <rect x="26" y="78" width="928" height="168" rx="10" class="panel"/>
+  <text x="42" y="100" class="mono">FRONT-END · TWO-STAGE AUTO REGION DETECTION（auto_region.cpp + region_cluster.cpp）</text>
+
+  <rect x="42" y="116" width="204" height="114" rx="8" class="box"/>
+  <text x="54" y="136" class="mono">STAGE 1 · 低成本初筛</text>
+  <text x="54" y="155" class="h">320×80 缩略图 Sobel 能量</text>
+  <text x="54" y="173" class="sub">• 抽最多 240 张关键帧缩略图</text>
+  <text x="54" y="189" class="sub">• 中央水平梯度能量突出度排序</text>
+  <text x="54" y="205" class="sub">• ≥4s 间隔精选候选时间点</text>
+  <text x="54" y="221" class="mono-teal" style="font-size:9.6px">选完即刻释放缩略图控峰 RSS</text>
+
+  <path d="M 246 173 L 274 173" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="278" y="116" width="212" height="114" rx="8" class="box-blue"/>
+  <text x="290" y="136" class="mono">STAGE 2A · 下半屏行聚类</text>
+  <text x="290" y="155" class="h">原帧抽帧 + OCR 抗噪聚类</text>
+  <text x="290" y="173" class="sub">• 仅对下半屏 50% 执行 OCR</text>
+  <text x="290" y="189" class="sub">• 抑制孤立数字、台标与路牌</text>
+  <text x="290" y="205" class="sub">• 多候选帧 Y 轴主带投票合并</text>
+  <text x="290" y="221" class="sub">• 达到最小有效候选数即早停</text>
+
+  <path d="M 490 173 L 518 173" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="522" y="116" width="212" height="114" rx="8" class="box-amber"/>
+  <text x="534" y="136" class="mono-amber">STAGE 2B · 双峰回扫</text>
+  <text x="534" y="155" class="h">防双行字幕上界截断</text>
+  <text x="534" y="173" class="sub">• 若 2A 仅命中单行字幕</text>
+  <text x="534" y="189" class="sub">• 映射回 Stage 1 的 row_sums</text>
+  <text x="534" y="205" class="sub">• 向上扫描寻找双行次峰帧</text>
+  <text x="534" y="221" class="sub">• 补采原帧校验并扩展上界</text>
+
+  <path d="M 734 173 L 762 173" class="arrow-teal" marker-end="url(#at)"/>
+
+  <rect x="766" y="116" width="172" height="114" rx="8" class="box-teal"/>
+  <text x="778" y="136" class="mono-teal">OUTPUT · SourceBox</text>
+  <text x="778" y="155" class="h">规范化选区与 Profile</text>
+  <text x="778" y="174" class="sub">• 输出全宽 SourceBox</text>
+  <text x="778" y="191" class="sub">• 同步产出 SubtitleProfile</text>
+  <text x="778" y="208" class="sub">• 零命中可平滑回退</text>
+  <text x="778" y="223" class="sub">  默认底部比例</text>
+
+  <!-- Bottom Panel: 4-Pass Dedupe -->
+  <rect x="26" y="262" width="928" height="170" rx="10" class="panel"/>
+  <text x="42" y="284" class="mono-teal">BACK-END · CONSENSUS &amp; 4-PASS DEDUPE MERGE（consensus.cpp + dedupe.cpp + srt.cpp）</text>
+
+  <rect x="42" y="302" width="158" height="112" rx="8" class="box"/>
+  <text x="54" y="322" class="mono">PRE · 跨帧共识</text>
+  <text x="54" y="341" class="h" style="font-size:12px">行评分 + 投票去噪</text>
+  <text x="54" y="360" class="sub">• 抑制边缘/背景字</text>
+  <text x="54" y="376" class="sub">• CJK 主键聚类投票</text>
+  <text x="54" y="392" class="sub">• 裁剪抖动拉丁边缘</text>
+  <text x="54" y="407" class="sub">  噪声 token</text>
+
+  <path d="M 200 358 L 222 358" class="arrow" marker-end="url(#a)"/>
+
+  <rect x="226" y="302" width="178" height="112" rx="8" class="box-blue"/>
+  <text x="238" y="322" class="mono">PASS 1 · 相邻合并</text>
+  <text x="238" y="341" class="h" style="font-size:12px">三类语义归并</text>
+  <text x="238" y="360" class="sub">• Identical：完全相同</text>
+  <text x="238" y="376" class="sub">• Containment：留更长句</text>
+  <text x="238" y="392" class="sub">• Similar (≥60%子序列):</text>
+  <text x="238" y="407" class="mono" style="font-size:9.6px">  留更短干净句 (≤300ms)</text>
+
+  <path d="M 404 358 L 426 358" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="430" y="302" width="152" height="112" rx="8" class="box"/>
+  <text x="442" y="322" class="mono">PASS 2 &amp; 3 · 清洗</text>
+  <text x="442" y="341" class="h" style="font-size:12px">空段与短噪声过滤</text>
+  <text x="442" y="360" class="sub">• Pass 2：剔除纯空白</text>
+  <text x="442" y="376" class="sub">  （含全角空白）条目</text>
+  <text x="442" y="392" class="sub">• Pass 3：过滤低于</text>
+  <text x="442" y="407" class="sub">  min_duration_ms 短段</text>
+
+  <path d="M 582 358 L 604 358" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="608" y="302" width="166" height="112" rx="8" class="box-blue"/>
+  <text x="620" y="322" class="mono">PASS 4 · 二次桥接</text>
+  <text x="620" y="341" class="h" style="font-size:12px">重新粘合断层字幕</text>
+  <text x="620" y="360" class="sub">• 清除中间短噪声段后</text>
+  <text x="620" y="376" class="sub">  原被隔开的同句相邻</text>
+  <text x="620" y="392" class="sub">• 再次相邻合并并重排</text>
+  <text x="620" y="407" class="sub">  1-based 连续序号</text>
+
+  <path d="M 774 358 L 796 358" class="arrow-teal" marker-end="url(#at)"/>
+
+  <rect x="800" y="302" width="138" height="112" rx="8" class="box-teal"/>
+  <text x="812" y="322" class="mono-teal">FINAL · SRT</text>
+  <text x="812" y="341" class="h" style="font-size:12px">唯一权威序列化</text>
+  <text x="812" y="360" class="sub">• format_srt_counted</text>
+  <text x="812" y="376" class="sub">• 溢出安全时码计算</text>
+  <text x="812" y="392" class="sub">• CLI / 桌面 / VLM</text>
+  <text x="812" y="407" class="sub">  全路径统一收口</text>
+</svg>

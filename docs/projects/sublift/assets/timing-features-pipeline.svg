@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 450" width="980" height="450">
+  <defs>
+    <style>
+      .bg { fill: #fafaf8; stroke: #d9dde6; stroke-width: 1.2; }
+      .title { font: 700 15px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .eyebrow { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; letter-spacing: 0.08em; }
+      .panel { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.25; }
+      .box { fill: #ffffff; stroke: #cfd5e2; stroke-width: 1.2; }
+      .box-blue { fill: #eef3ff; stroke: #2b4be0; stroke-width: 1.35; }
+      .box-teal { fill: #e9f8f5; stroke: #0d9488; stroke-width: 1.35; }
+      .box-amber { fill: #fff8eb; stroke: #d97706; stroke-width: 1.35; }
+      .h { font: 700 12.5px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #111318; }
+      .sub { font: 500 10.8px -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Inter', sans-serif; fill: #4b5260; }
+      .mono { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #2b4be0; }
+      .mono-teal { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #0d9488; }
+      .mono-amber { font: 600 10.5px 'JetBrains Mono', 'SF Mono', Menlo, monospace; fill: #b45309; }
+      .arrow { stroke: #4b5260; stroke-width: 1.5; fill: none; }
+      .arrow-blue { stroke: #2b4be0; stroke-width: 1.6; fill: none; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#4b5260"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#2b4be0"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="978" height="448" rx="12" class="bg"/>
+  <text x="26" y="30" class="eyebrow">VISUAL FEATURES // DUAL-POLARITY MASK · SECTOR DHASH · GLYPH VETO</text>
+  <text x="26" y="51" class="title">宽字幕带视觉特征提取：双极性自适应存在掩码 + 三分区 64-bit dHash + 三分区字形保留</text>
+  <line x1="26" y1="64" x2="954" y2="64" stroke="#e3e6ee" stroke-width="1"/>
+
+  <!-- Top Section: Dual-Polarity Adaptive Mask Pipeline -->
+  <rect x="26" y="78" width="928" height="176" rx="10" class="panel"/>
+  <text x="42" y="100" class="mono">STAGE A · DUAL-POLARITY ADAPTIVE PRESENCE MASK（adaptive_presence_mask.cpp）</text>
+
+  <!-- Step 1: ROI Input -->
+  <rect x="42" y="128" width="128" height="74" rx="8" class="box"/>
+  <text x="56" y="152" class="h">字幕带 ROI</text>
+  <text x="56" y="170" class="sub">RGB24 / Gray8</text>
+  <text x="56" y="186" class="sub">自适应 block_size</text>
+
+  <!-- Fork to Pos/Neg -->
+  <path d="M 170 165 L 194 165 L 194 134 L 214 134" class="arrow" marker-end="url(#a)"/>
+  <path d="M 170 165 L 194 165 L 194 198 L 214 198" class="arrow" marker-end="url(#a)"/>
+
+  <!-- Bright Polarity -->
+  <rect x="218" y="108" width="218" height="52" rx="7" class="box-blue"/>
+  <text x="230" y="129" class="h" style="font-size:12px">正极性：亮字 + 暗描边</text>
+  <text x="230" y="147" class="sub" style="font-size:10.3px">cand_pos · dilated_dark_outline</text>
+
+  <!-- Dark Polarity -->
+  <rect x="218" y="172" width="218" height="52" rx="7" class="box-amber"/>
+  <text x="230" y="193" class="h" style="font-size:12px">负极性：暗字 + 亮描边</text>
+  <text x="230" y="211" class="sub" style="font-size:10.3px">cand_neg · dilated_bright_outline</text>
+
+  <!-- Arrows to Filter & Cluster -->
+  <path d="M 436 134 L 468 134" class="arrow" marker-end="url(#a)"/>
+  <path d="M 436 198 L 468 198" class="arrow" marker-end="url(#a)"/>
+
+  <rect x="472" y="114" width="208" height="104" rx="8" class="box"/>
+  <text x="486" y="136" class="h">连通域过滤 + 水平行聚类</text>
+  <text x="486" y="155" class="sub">• filter_polarity_components</text>
+  <text x="486" y="172" class="sub">• cluster_polarity_text_lines</text>
+  <text x="486" y="189" class="sub">• 比较 chars_b 与 chars_d</text>
+  <text x="486" y="206" class="mono" style="font-size:10px">择优胜出极性 → valid_mask</text>
+
+  <!-- Arrow to Outputs -->
+  <path d="M 680 166 L 712 166" class="arrow-blue" marker-end="url(#ab)"/>
+
+  <rect x="716" y="112" width="222" height="108" rx="8" class="box-teal"/>
+  <text x="730" y="133" class="mono-teal">DUAL OUTPUTS</text>
+  <text x="730" y="152" class="sub">1. 闭运算前 → <tspan style="font-weight:700;fill:#111318">hash_mask</tspan> 算 dHash</text>
+  <text x="730" y="171" class="sub">2. 3×1 水平闭运算 + 走廊面积门控</text>
+  <text x="730" y="188" class="sub">   (≥2字 或 单字达最小面积)</text>
+  <text x="730" y="206" class="mono-teal" style="font-size:10px">→ foreground_ratio &amp; valid_mask</text>
+
+  <!-- Bottom Left: Sector dHash Layout -->
+  <rect x="26" y="270" width="456" height="162" rx="10" class="panel"/>
+  <text x="42" y="292" class="mono">STAGE B · 3-SECTOR 64-BIT DHASH（dhash.cpp）</text>
+  <text x="42" y="311" class="sub">避免宽字幕带被 8×8 均匀压缩淹没短词变化，按水平三区非均匀分配 64 位：</text>
+
+  <!-- Visual bar of 3 sectors -->
+  <rect x="42" y="326" width="118" height="58" rx="6" class="box-blue"/>
+  <text x="54" y="346" class="h" style="font-size:11.5px">左区 [0, 28%)</text>
+  <text x="54" y="363" class="mono" style="font-size:10.5px">12 × 2 = 24 bit</text>
+  <text x="54" y="377" class="sub" style="font-size:9.8px">高水平分辨率</text>
+
+  <rect x="166" y="326" width="176" height="58" rx="6" class="box-teal"/>
+  <text x="180" y="346" class="h" style="font-size:11.5px">中区 [28%, 72%)</text>
+  <text x="180" y="363" class="mono-teal" style="font-size:10.5px">4 × 4 = 16 bit</text>
+  <text x="180" y="377" class="sub" style="font-size:9.8px">捕获单/双行纵向结构</text>
+
+  <rect x="348" y="326" width="118" height="58" rx="6" class="box-blue"/>
+  <text x="360" y="346" class="h" style="font-size:11.5px">右区 [72%, 100%]</text>
+  <text x="360" y="363" class="mono" style="font-size:10.5px">12 × 2 = 24 bit</text>
+  <text x="360" y="377" class="sub" style="font-size:9.8px">高水平分辨率</text>
+
+  <rect x="42" y="394" width="424" height="24" rx="5" fill="#f3f5f9"/>
+  <text x="54" y="410" class="mono" style="font-size:10px;fill:#111318">hash64 = (h_left &lt;&lt; 40) | (h_center &lt;&lt; 24) | h_right  ·  dist = std::popcount(h1 ^ h2)</text>
+
+  <!-- Bottom Right: Masked Local SSIM & 3-Sector Glyph Retention Veto -->
+  <rect x="498" y="270" width="456" height="162" rx="10" class="panel"/>
+  <text x="514" y="292" class="mono-amber">STAGE C · 3-SECTOR GLYPH RETENTION VETO（changepoint.cpp）</text>
+  <text x="514" y="311" class="sub">当背景大范围移动触发疑似变化时，检查锚点与当前帧掩码的双向重合度：</text>
+
+  <!-- 25% | 50% | 25% sectors -->
+  <rect x="514" y="326" width="102" height="54" rx="6" class="box-amber"/>
+  <text x="525" y="346" class="h" style="font-size:11.5px">左 [0, 25%)</text>
+  <text x="525" y="365" class="mono-amber" style="font-size:10px">双向保留 ≥ 65%</text>
+
+  <rect x="622" y="326" width="208" height="54" rx="6" class="box-amber"/>
+  <text x="646" y="346" class="h" style="font-size:11.5px">核心中区 [25%, 75%)</text>
+  <text x="646" y="365" class="mono-amber" style="font-size:10px">双向保留 ≥ 65%（核心文字锚定）</text>
+
+  <rect x="836" y="326" width="102" height="54" rx="6" class="box-amber"/>
+  <text x="847" y="346" class="h" style="font-size:11.5px">右 [75%, 100%]</text>
+  <text x="847" y="365" class="mono-amber" style="font-size:10px">双向保留 ≥ 65%</text>
+
+  <rect x="514" y="390" width="424" height="28" rx="5" fill="#fff8eb" stroke="#f5d08a"/>
+  <text x="526" y="408" class="sub" style="font-size:10.5px;fill:#78350f">全局双向重叠 ≥ 75% 且面积比 ∈ [0.65, 1.50] 且三区均保留 → <tspan style="font-weight:700">判定字幕静止，否决误切</tspan></text>
+</svg>

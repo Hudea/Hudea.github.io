@@ -5,6 +5,16 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'Hudea',
   description: '知识笔记与工程项目',
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111318'/%3E%3Cpath d='M9 8h3.4v6.6h7.2V8H23v16h-3.4v-6.4h-7.2V24H9V8z' fill='%23ffffff'/%3E%3Crect x='23.5' y='21.5' width='3' height='3' rx='0.6' fill='%237e9eff'/%3E%3C/svg%3E"
+      }
+    ]
+  ],
   markdown: {
     math: true
   },
@@ -12,8 +22,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '笔记', link: '/notes/', activeMatch: '^/notes/' },
-      { text: 'SubLift', link: '/projects/sublift', activeMatch: '^/projects/sublift' }
+      { text: 'SubLift', link: '/projects/sublift/', activeMatch: '^/projects/sublift' },
+      { text: '笔记', link: '/notes/', activeMatch: '^/notes/' }
     ],
 
     sidebar: {
@@ -62,13 +72,13 @@ export default defineConfig({
       ],
       '/projects/': [
         {
-          text: 'SubLift',
+          text: 'SubLift v1.0.0',
           items: [
-            { text: '概览', link: '/projects/sublift' },
-            { text: '核心功能', link: '/projects/sublift#核心功能' },
-            { text: '技术', link: '/projects/sublift#技术' },
-            { text: '架构', link: '/projects/sublift#架构' },
-            { text: '亮点', link: '/projects/sublift#亮点' }
+            { text: '项目总览', link: '/projects/sublift/' },
+            { text: '跨栈分层架构与工程治理', link: '/projects/sublift/architecture' },
+            { text: '视觉特征与纯毫秒打轴引擎', link: '/projects/sublift/timing-engine' },
+            { text: '自动选区、解码与文本后处理', link: '/projects/sublift/region-and-text' },
+            { text: '桌面宿主、三引擎与 VLM 管线', link: '/projects/sublift/desktop-and-vlm' }
           ]
         }
       ]
