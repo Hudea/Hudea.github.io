@@ -6,20 +6,19 @@ export default defineConfig({
   title: 'Hudea',
   description: '知识笔记与工程项目',
   head: [
-    [
-      'link',
-      {
-        rel: 'icon',
-        type: 'image/svg+xml',
-        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111318'/%3E%3Cpath d='M9 8h3.4v6.6h7.2V8H23v16h-3.4v-6.4h-7.2V24H9V8z' fill='%23ffffff'/%3E%3Crect x='23.5' y='21.5' width='3' height='3' rx='0.6' fill='%237e9eff'/%3E%3C/svg%3E"
-      }
-    ]
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }]
   ],
   markdown: {
     math: true
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: {
+      light: '/butterfly-light.png',
+      dark: '/butterfly-dark.png',
+      alt: 'Hudea'
+    },
     nav: [
       { text: '首页', link: '/' },
       { text: 'SubLift', link: '/projects/sublift/', activeMatch: '^/projects/sublift' },

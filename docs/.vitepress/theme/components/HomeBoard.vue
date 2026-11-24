@@ -359,12 +359,26 @@ const featuredProject = {
 .hero-backdrop {
   position: absolute;
   inset: 0 0 auto 0;
-  height: 300px;
+  height: 360px;
   pointer-events: none;
-  background-image: radial-gradient(var(--hd-grid-dot) 1px, transparent 1px);
-  background-size: 20px 20px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  background-image: url('/bg-hudea.webp');
+  background-position: 72% 28%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: var(--hd-hero-opacity);
+  filter: var(--hd-bg-filter);
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    transparent 100%
+  );
 }
 
 .board-inner {
@@ -556,6 +570,8 @@ const featuredProject = {
   border: 1px solid var(--hd-hairline);
   border-radius: 14px;
   background: var(--hd-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--hd-shadow-card);
   overflow: hidden;
   transition: border-color 0.2s ease;
@@ -819,6 +835,8 @@ const featuredProject = {
   border: 1px solid var(--hd-hairline);
   border-radius: 14px;
   background: var(--hd-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--hd-shadow-card);
   overflow: hidden;
   transition: border-color 0.2s ease;
